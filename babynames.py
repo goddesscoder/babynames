@@ -3,8 +3,6 @@
 
 # BabyNames python coding exercise.
 
-__author__ = "Bethsheba Zebata/goddesscoder. Help from Gabby."
-
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
 # http://www.apache.org/licenses/LICENSE-2.0
@@ -12,7 +10,6 @@ __author__ = "Bethsheba Zebata/goddesscoder. Help from Gabby."
 """
 Define the extract_names() function below and change main()
 to call it.
-
 For writing regex, it's nice to include a copy of the target
 text for inspiration. Here's what the HTML looks like in the
 baby.html files:
@@ -23,7 +20,6 @@ baby.html files:
 <tr align="right"><td>2</td><td>Christopher</td><td>Ashley</td>
 <tr align="right"><td>3</td><td>Matthew</td><td>Brittany</td>
 ...
-
 Suggested milestones for incremental development:
  - Extract all the text from the file and print it
  - Find and extract the year and print it
@@ -46,29 +42,7 @@ def extract_names(filename):
     ['2006', 'Aaliyah 91', 'Aaron 57', 'Abagail 895', ...]
     """
     names = []
-    baby_dict = {}
-    with open(filename) as file_name:
-        read_file = file_name.read()
-        pattern = re.compile(r'Popularity in')
-        all_names = pattern.finditer(read_file)
-        file_name.close()
-        for name in all_names:
-            year = name.span()
-            names.append(read_file[year[1]:][1:5])
-
-    with open(filename) as lines:
-        for line in lines:
-            rank = re.findall(
-                r'"right"><td>(.*?)</td><td>(.*?)</td><td>(.*?)</td>', line)
-            for baby_name in rank:
-                if not baby_name[1] in baby_dict:
-                    baby_dict[baby_name[1]] = baby_name[0]
-                if not baby_name[2] in baby_dict:
-                    baby_dict[baby_name[2]] = baby_name[0]
-
-    for key in sorted(baby_dict):
-        names.append(key + " " + baby_dict[key])
-    # print(names)
+    # +++your code here+++
     return names
 
 
@@ -107,15 +81,6 @@ def main(args):
     # or to write the list to a summary file (e.g. `baby1990.html.summary`).
 
     # +++your code here+++
-    for each in file_list:
-        each_file = extract_names(each)
-        each_file = "\n".join(each_file)
-        if not create_summary:
-            print(each_file)
-        else:
-            new_file = each + ".summary"
-            f = open(new_file, "w")
-            f.write(str(each_file))
 
 
 if __name__ == '__main__':
